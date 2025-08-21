@@ -18,16 +18,11 @@ let ventoInfo = document.querySelector('.ventoInfo')
 let ventoPonto = document.querySelector('.ventoPonto')
 let imgElement = document.querySelector('.temp img')
 
-
-
-
-
-
 // Functions
 btn.addEventListener('click', async (e) => {
     e.preventDefault()
     let searchInput = document.querySelector('#searchInput')
-    cityName = searchInput.value
+    let cityName = searchInput.value
     console.log(`Cidade dentro do botao: ${cityName}`)
     let cityData = await getLat_lon(cityName)
     let lat = cityData.lat
@@ -39,7 +34,7 @@ btn.addEventListener('click', async (e) => {
     let wind = weatherConditions.wind
     let windDeg = weatherConditions.windDeg
     let icon = weatherConditions.icon
-    
+
 
     resultado.style.display = 'block'
     titulo.textContent = name
