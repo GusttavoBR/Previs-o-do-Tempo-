@@ -46,7 +46,7 @@ btn.addEventListener('click', async (e) => {
     tempInfo.textContent = temp
     ventoInfo.textContent = wind
     ventoPonto.style.transform = `rotate(${windDeg}deg)`
-    imgElement.src = `http://openweathermap.org/img/wn/${icon}@2x.png`
+    imgElement.src = `https://openweathermap.org/img/wn/${icon}@2x.png`
 
 })
 
@@ -81,8 +81,6 @@ const getWeather = async (lat, lon) => {
         let windDeg = weatherNow.wind.deg
         let icon = weatherNow.weather[0].icon
 
-
-        
         return {
             temp: temp,
             wind: wind,
