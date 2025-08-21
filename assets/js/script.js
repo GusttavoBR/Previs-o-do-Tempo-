@@ -3,7 +3,7 @@
  https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={da254ee7611d9a8c1d9bdaaa8510ee02} */
 
 // Get Lat and Lon
-// http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={da254ee7611d9a8c1d9bdaaa8510ee02}
+// https://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={da254ee7611d9a8c1d9bdaaa8510ee02}
 
 
 
