@@ -52,7 +52,7 @@ btn.addEventListener('click', async (e) => {
 
 const getLat_lon = async (cityName) => {
     try {
-        let response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=da254ee7611d9a8c1d9bdaaa8510ee02`)
+        let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=da254ee7611d9a8c1d9bdaaa8510ee02`)
         let cityResponse = await response.json()
         let lat = cityResponse[0].lat
         let lon = cityResponse[0].lon
