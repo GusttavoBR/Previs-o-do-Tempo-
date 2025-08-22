@@ -23,31 +23,37 @@ btn.addEventListener('click', async (e) => {
     e.preventDefault()
     let searchInput = document.querySelector('#searchInput')
     let cityName = searchInput.value
-    console.log(`Cidade dentro do botao: ${cityName}`)
-    let cityData = await getLat_lon(cityName)
-    let lat = cityData.lat
-    let lon = cityData.lon
-    let name = cityData.name
+    if (cityName != '') {
+        showWarning('Carregando...')
+        console.log(`Cidade dentro do botao: ${cityName}`)
+        let cityData = await getLat_lon(cityName)
+        let lat = cityData.lat
+        let lon = cityData.lon
+        let name = cityData.name
 
-    let weatherConditions = await getWeather(lat, lon)
-    let temp = weatherConditions.temp
-    let wind = weatherConditions.wind
-    let windDeg = weatherConditions.windDeg
-    let icon = weatherConditions.icon
+        let weatherConditions = await getWeather(lat, lon)
+        let temp = weatherConditions.temp
+        let wind = weatherConditions.wind
+        let windDeg = weatherConditions.windDeg
+        let icon = weatherConditions.icon
 
+        showWarning('')
 
-    resultado.style.display = 'block'
-    titulo.textContent = name
-    tempInfo.textContent = temp
-    ventoInfo.textContent = wind
-    ventoPonto.style.transform = `rotate(${windDeg}deg)`
-    imgElement.src = `https://openweathermap.org/img/wn/${icon}@2x.png`
+        resultado.style.display = 'block'
+        titulo.textContent = name
+        tempInfo.textContent = temp
+        ventoInfo.textContent = wind
+        ventoPonto.style.transform = `rotate(${windDeg - 90}deg)`
+        imgElement.src = `https://openweathermap.org/img/wn/${icon}@2x.png`
+    } else {
+        showWarning('Digite uma cidade')
+    }
 
 })
 
 const getLat_lon = async (cityName) => {
     try {
-        let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=da254ee7611d9a8c1d9bdaaa8510ee02`)
+        let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${encodeURI(cityName)}&limit=1&appid=da254ee7611d9a8c1d9bdaaa8510ee02`)
         let cityResponse = await response.json()
         let lat = cityResponse[0].lat
         let lon = cityResponse[0].lon
@@ -87,6 +93,10 @@ const getWeather = async (lat, lon) => {
     catch (error) {
         console.log(error)
     }
+}
+
+const showWarning = (msg) => {
+    document.querySelector('.aviso').textContent = msg
 }
 
 // Script
